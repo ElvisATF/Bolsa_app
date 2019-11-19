@@ -1,23 +1,23 @@
 module SessionsHelper
 
-def log_in(user_ent)
-	session[:user_ent_id] = user_ent.id
+def log_in(user_entity)
+	session[:user_entity_id] = user_entity.id
 end
 
-def remember(user_ent)
-user_ent.remember
-cookies.permanent.signed[:user_ent_id] = user_ent.id
-cookies.permanent[:remember_token] = user_ent.remember_token
+def remember(user_entity)
+user_entity.remember
+cookies.permanent.signed[:user_entity_id] = user_entity.id
+cookies.permanent[:remember_token] = user_entity.remember_token
 end
 
 def current_user
-	  if (user_ent_id = session[:user_ent_id])
-		@current_user ||= UserEnt.find_by(id: user_ent_id)
-      elsif (user_ent_id = cookies.signed[:user_ent_id])
-      user_ent = UserEnt.find_by(id: user_ent_id)
-      if user_ent && user_ent.authenticated?(cookies[:remember_token])
-      log_in user_ent
-      @current_user = user_ent
+	  if (user_entity_id = session[:user_entity_id])
+		@current_user ||= UserEntities.find_by(id: user_entity_id)
+      elsif (user_entity_id = cookies.signed[:user_entity_id])
+      user_entity = UserEntities.find_by(id: user_entity_id)
+      if user_entity && user_entity.authenticated?(cookies[:remember_token])
+      log_in user_entity
+      @current_user = user_entity
 	end
   end	
 end
@@ -27,13 +27,13 @@ end
 
 def log_out
 	forget(current_user)
-	session.delete(:user_ent_id)
+	session.delete(:user_entity_id)
 	@currrent_user = nil
 end
 
-def forget(user_ent)
-	user_ent.forget
-	cookies.delete(:user_ent_id)
+def forget(user_entity)
+	user_entity.forget
+	cookies.delete(:user_entity_id)
 	cookies.delete(:remember_token)
 end
 

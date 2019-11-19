@@ -1,6 +1,6 @@
-class CreateUserEnts < ActiveRecord::Migration[6.0]
+class CreateUserEntities < ActiveRecord::Migration[6.0]
   def change
-    create_table :user_ents do |t|
+    create_table :user_entities do |t|
       t.string :name
       t.string :email
       t.string :password

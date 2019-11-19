@@ -4,11 +4,11 @@ class SessionsController < ApplicationController
   end
 
   def create
-  	user_ent = UserEnt.find_by(email: params[:session][:email].downcase)
-   if user_ent && user_ent.authenticate(params[:session][:password])
-    log_in user_ent
-    params[:session][:remember_me] == '1' ? remember(user_ent) : forget(user_ent)
-    redirect_to user_ent
+  	user_entity = UserEntities.find_by(email: params[:session][:email].downcase)
+   if user_entity && user_entity.authenticate(params[:session][:password])
+    log_in user_entity
+    params[:session][:remember_me] == '1' ? remember(user_entity) : forget(user_entity)
+    redirect_to user_entity
   	else
     flash.now[:danger] = 'Invalid email/password combination'
   		render 'newsession'
