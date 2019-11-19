@@ -11,6 +11,7 @@ class UserEntController < ApplicationController
   def create
   @user_ent = UserEnt.new(user_params)
   if @user_ent.save
+    
   	flash[:success] = "Welcome to Bolsa de Empregos!"
   	redirect_to @user_ent
     #redirect_to root_url
@@ -20,13 +21,14 @@ class UserEntController < ApplicationController
   end
   end
 
+private
 
   #def user_ent_params
   #	params.permit(:name, :email, :password, :confirmation_password,:address, :postal_cod, :contact, :nif,:locality,:professional_activity,:presentation)
   #end
 
 def user_params
-    params.permit(:name, :email, :password, :confirmation_password,:address, :postal_cod, :contact, :nif,:locality,:professional_activity,:presentation)
+    params.require(:user_ent).permit(:name, :email, :password, :confirmation_password,:address, :postal_cod, :contact, :nif,:locality,:professional_activity,:presentation)
   end
 
 end

@@ -12,8 +12,12 @@
 <li><%= link_to "Noticias",'#' %></li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
+<% if logged_in? %>
+<li><%= link_to "Log out", logout_path, method: :delete %></li>
+<% else %>
 <li><%= link_to "Registar-me",reges_path  %></li>
 <li><%= link_to "Log in", newsession_path %></li>
+<% end %>
 </ul>
 </nav>
 </div>
