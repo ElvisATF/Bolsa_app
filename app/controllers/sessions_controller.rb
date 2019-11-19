@@ -7,7 +7,8 @@ class SessionsController < ApplicationController
   	user_ent = UserEnt.find_by(email: params[:session][:email].downcase)
    if user_ent && user_ent.authenticate(params[:session][:password])
     log_in user_ent
-      redirect_to user_ent
+    params[:session][:remember_me] == '1' ? remember(user_ent) : forget(user_ent)
+    redirect_to user_ent
   	else
     flash.now[:danger] = 'Invalid email/password combination'
   		render 'newsession'
@@ -15,7 +16,7 @@ class SessionsController < ApplicationController
 end
 
   def destroy
-    log_out
+    log_out if logged_in?
     redirect_to root_url
   end
 
