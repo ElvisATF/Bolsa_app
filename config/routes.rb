@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   get '/newsession',  to: 'sessions#newsession'
   post '/newsession', to: 'sessions#create'
   delete '/logout',   to: 'sessions#destroy'
-  get '/edit',        to: 'user_ent#edit' 
+  get '/edit',        to: 'user_entity#edit' 
   root 'static_pages#home'
 
-  resources :user_ent
+  resources :user_entity
 end

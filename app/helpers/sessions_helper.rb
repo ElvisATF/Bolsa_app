@@ -12,12 +12,12 @@ end
 
 def current_user
 	  if (user_entity_id = session[:user_entity_id])
-		@current_user ||= UserEntities.find_by(id: user_entity_id)
+		@current_user ||= UserEntity.find_by(id: user_entity_id)
       elsif (user_entity_id = cookies.signed[:user_entity_id])
-      user_entity = UserEntities.find_by(id: user_entity_id)
-      if user_entity && user_entity.authenticated?(cookies[:remember_token])
-      log_in user_entity
-      @current_user = user_entity
+       user_entity = UserEntity.find_by(id: user_entity_id)
+       if user_entity && user_entity.authenticated?(cookies[:remember_token])
+        log_in user_entity
+        @current_user = user_entity
 	end
   end	
 end
