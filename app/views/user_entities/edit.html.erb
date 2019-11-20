@@ -1,11 +1,12 @@
 <% provide(:title, "Edit user") %>
 <h1>Update your profile</h1>
+
   <div class="row">
 	<div class="col-md-6 col-md-offset-3">
 	  <%= form_with(model: @user_entity, local: true) do |f| %>
 	
 
-   	  <%= f.label :name %>
+   	<%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
       
       <%= f.label :email %>
@@ -18,7 +19,7 @@
       <%= f.password_field :confirmation_password, class:'form-control' %>
 
       <%= f.label :address %>
-      <%= f.text_field :address, class: 'form-control' %>
+      <%= f.text_area :address, class: 'form-control' %>
 
       
       <%= f.label :postal_cod %>
@@ -40,11 +41,10 @@
       <%= f.label :presentation %>
       <%= f.text_area :presentation, class: 'form-control' %>
 
- <%= f.submit "Save changes", class: "btn btn-primary" %>
-<% end %>
-<div class="gravatar_edit">
-<%= gravatar_for @user_ent %>
-<a href="https://gravatar.com/emails" target="_blank">change</a>
+  <%= f.submit "Save changes", class: "btn btn-primary btn-xs btn-lg" %>
+   <%= link_to "Cancelar",show_path(current_user), class: "btn btn-lg btn-primary btn-xs" %>
+
+ <% end %>
 </div>
 </div>
 </div>

@@ -1,0 +1,15 @@
+<% provide(:title, @user_entity.name) %>
+
+<div class="row">
+<aside class="col-md-4">
+<section class="user_info">
+<h1>Nome</h1>
+<p> 
+	<%= gravatar_for @user_entity %>
+	<%= @user_entity.name %>
+</p>
+</section >
+</aside>
+	<%= link_to "Edit Data", edit_path(current_user), class: "btn btn-lg btn-primary btn-xs" %>
+	<%= link_to "Change Password", '#', class: "btn btn-lg btn-primary btn-xs" %>
+</div>
