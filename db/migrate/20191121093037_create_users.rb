@@ -1,6 +1,6 @@
-class CreateCandidates < ActiveRecord::Migration[6.0]
+class CreateUsers < ActiveRecord::Migration[6.0]
   def change
-    create_table :candidates do |t|
+    create_table :users do |t|
       t.string :email
       t.string :password
       t.string :password_confirmation
@@ -15,8 +15,8 @@ class CreateCandidates < ActiveRecord::Migration[6.0]
       t.string :level_of_qualifications
       t.string :literary_abilities
       t.string :professional_situation
-      t.string :professional_experience
-
+      t.string :professional_expirience
+      
       t.timestamps
     end
   end

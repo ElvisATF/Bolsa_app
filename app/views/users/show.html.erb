@@ -1,0 +1,83 @@
+<% provide(:title, @user.name) %>
+<h1>
+<%= gravatar_for @user %>
+</h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @user.password %>
+</p>
+
+<p>
+  <strong>Password confirmation:</strong>
+  <%= @user.password_confirmation %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @user.address %>
+</p>
+
+<p>
+  <strong>Postal cod:</strong>
+  <%= @user.postal_cod %>
+</p>
+
+<p>
+  <strong>Locality:</strong>
+  <%= @user.locality %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @user.contact %>
+</p>
+
+<p>
+  <strong>Identity card:</strong>
+  <%= @user.identity_card %>
+</p>
+
+<p>
+  <strong>Professional area:</strong>
+  <%= @user.professional_area %>
+</p>
+
+<p>
+  <strong>Presentation:</strong>
+  <%= @user.presentation %>
+</p>
+
+<p>
+  <strong>Level of qualifications:</strong>
+  <%= @user.level_of_qualifications %>
+</p>
+
+<p>
+  <strong>Literary abilities:</strong>
+  <%= @user.literary_abilities %>
+</p>
+
+<p>
+  <strong>Professional situation:</strong>
+  <%= @user.professional_situation %>
+</p>
+
+<p>
+  <strong>Professional expirience:</strong>
+  <%= @user.professional_expirience %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

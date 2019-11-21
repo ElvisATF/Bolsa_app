@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   #get 'sessions/news'
   get '/entidades',   to: 'static_pages#entidades'
   get '/candidatos',  to: 'static_pages#candidatos'
@@ -14,10 +15,12 @@ Rails.application.routes.draw do
   get '/edit',        to: 'user_entities#edit' 
   get '/entidade',    to: 'user_entities#entidade'
   get '/signup',      to: 'users#new'
-
+  post'/signup',      to: 'users#create'
+  delete '/log_out',  to: 'sessions#destroy_user'
   #get '/edit',        to: 'user_entity#update'
   post'/edit',        to: 'user_entities#update'
   root 'static_pages#home'
 
   resources :user_entities
+  resources :users
 end

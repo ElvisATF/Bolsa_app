@@ -10,12 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_20_171450) do
+ActiveRecord::Schema.define(version: 2019_11_21_131236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "candidates", force: :cascade do |t|
+  create_table "user_entities", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password"
+    t.string "confirmation_password"
+    t.string "address"
+    t.string "postal_cod"
+    t.integer "contact"
+    t.integer "nif"
+    t.string "locality"
+    t.string "professional_activity"
+    t.string "presentation"
+    t.string "type_user"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
+    t.string "remember_digest"
+    t.index ["email"], name: "index_user_entities_on_email", unique: true
+  end
+
+  create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password"
     t.string "password_confirmation"
@@ -30,27 +50,13 @@ ActiveRecord::Schema.define(version: 2019_11_20_171450) do
     t.string "level_of_qualifications"
     t.string "literary_abilities"
     t.string "professional_situation"
-    t.string "professional_experience"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "user_entities", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password"
-    t.string "confirmation_password"
-    t.string "address"
-    t.string "postal_cod"
-    t.integer "contact"
-    t.integer "nif"
-    t.string "locality"
-    t.string "professional_activity"
-    t.string "presentation"
+    t.string "professional_expirience"
+    t.string "type_user"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
     t.string "remember_digest"
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end

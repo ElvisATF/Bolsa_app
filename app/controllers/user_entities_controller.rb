@@ -1,5 +1,9 @@
 class UserEntitiesController < ApplicationController
   
+   def index
+    @user_entity = UserEntity.all
+  end
+
 	def show
 		@user_entity = UserEntity.find(params[:id])
 	end
@@ -33,13 +37,11 @@ else
 render 'edit' 
 end
 
+def destroy
+end
   
 end
 private
-  #def user_params
-  
-  #	params.permit(:name, :email, :password, :confirmation_password,:address, :postal_cod, :contact, :nif,:locality,:professional_activity,:presentation)
-  #end
 
 def user_params
    params.require(:user_entity).permit(:name, :email, :password, :confirmation_password,:address, :postal_cod, :contact, :nif,:locality,:professional_activity,:presentation)

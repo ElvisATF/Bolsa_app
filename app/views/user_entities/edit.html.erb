@@ -1,50 +1,6 @@
 <% provide(:title, "Edit user") %>
 <h1>Update your profile</h1>
 
-  <div class="row">
-	<div class="col-md-6 col-md-offset-3">
-	  <%= form_with(model: @user_entity, local: true) do |f| %>
-	
+<%= render 'form', user_entities: @user_entities %>
 
-   	<%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
-      
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-      
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.label :confirmation_password, "Confirmar password" %>
-      <%= f.password_field :confirmation_password, class:'form-control' %>
-
-      <%= f.label :address %>
-      <%= f.text_area :address, class: 'form-control' %>
-
-      
-      <%= f.label :postal_cod %>
-      <%= f.text_field :postal_cod, class: 'form-control' %>
-
-      <%= f.label :contact %>
-      <%= f.text_field :contact, class: 'form-control' %>
-
-
-      <%= f.label :nif %>
-      <%= f.text_field :nif, class: 'form-control' %>
-
-      <%= f.label :locality %>
-      <%= f.text_field :locality, class: 'form-control' %>
-
-      <%= f.label :professional_activity %>
-      <%= f.select :professional_activity, ['Informatica','Enfermagem','Mecanica'] %>
-
-      <%= f.label :presentation %>
-      <%= f.text_area :presentation, class: 'form-control' %>
-
-  <%= f.submit "Save changes", class: "btn btn-primary btn-xs btn-lg" %>
-   <%= link_to "Cancelar",show_path(current_user), class: "btn btn-lg btn-primary btn-xs" %>
-
- <% end %>
-</div>
-</div>
-</div>
+<%= link_to 'Show', @user %> |

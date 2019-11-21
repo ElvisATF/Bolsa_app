@@ -14,9 +14,12 @@
 </ul>
 <ul class="nav navbar-nav navbar-right">
 <% if logged_in? %>
-
 <li><%= link_to "| Log out", logout_path, method: :delete %></li>
-<% else %>
+<% end %>
+<% if logged_in_user? %>
+<li><%= link_to "| Log_out", log_out_path, method: :delete %></li>
+<% end %>
+<% if !logged_in? && !logged_in_user? %>
 <li><%= link_to "Registar-me",reges_path  %></li>
 <li><%= link_to "Log in", newsession_path %></li>
 <% end %>
