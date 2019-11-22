@@ -34,15 +34,31 @@ end
 def current?(user)
 user && user == current_user_user
 end
-
-def logged_in_user?
-    !current_user_user.nil?
+#def is_user
+ # !current_user_user.nil?
+#end
+#def is_entity
+ # !current_user.nil?
+#end
+def logged_in?
+	!current_user.nil? || !current_user_user.nil?
 end
+#def log_out_user
+#	forget_user(current_user_user)
+#	session.delete(:user_id)
+#	@currrent_user_user = nil
+#end
+def log_out
+  	if !current_user.nil?
+	forget(current_user)
+	session.delete(:user_entity_id)
+	@currrent_user = nil
 
-def log_out_user
-	forget_user(current_user_user)
+    elsif !current_user_user.nil?
+    forget_user(current_user_user)
 	session.delete(:user_id)
 	@currrent_user_user = nil
+   end
 end
 
 def forget_user(user)
@@ -63,18 +79,8 @@ def current_user
   end	
 end
 
-def current_user?(user_entity)
+def current_entity?(user_entity)
  user_entity && user_entity == current_user
-end
-
-def logged_in?
-	!current_user.nil?
-end
-
-def log_out
-	forget(current_user)
-	session.delete(:user_entity_id)
-	@currrent_user = nil
 end
 
 def forget(user_entity)
@@ -91,5 +97,4 @@ end
 def store_location
    session[:forwarding_url] = request.original_url if request.get?
 end
-
 end

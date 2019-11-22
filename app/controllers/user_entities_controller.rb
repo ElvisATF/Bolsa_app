@@ -60,7 +60,7 @@ class UserEntitiesController < ApplicationController
 
   def correct_user
   @user_entity = UserEntity.find(params[:id])
-  redirect_to(root_url) unless  current_user?(@user_entity)
+  redirect_to(root_url) unless  current_entity?(@user_entity)
   end
 
   def user_params

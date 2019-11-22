@@ -1,7 +1,7 @@
-<% provide(:title, 'All users') %>
+<% provide(:title, 'All Entities') %>
 <h1>All Entities</h1>
 <ul class="users">
-<% @Entities.each do |user_entity| %>
+<% @user_entity.each do |user_entity| %>
 <li>
 <%= gravatar_for user_entity, size: 50 %>
 <%= link_to user_entity.name, user_entity %>

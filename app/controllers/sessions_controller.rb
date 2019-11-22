@@ -27,10 +27,10 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
 
-  def destroy_user
-    log_out_user if logged_in_user?
-    redirect_to root_url
-  end
+  #def destroy_user
+   # log_out_user if logged_in?
+    #redirect_to root_url
+  #end
 
 end
 

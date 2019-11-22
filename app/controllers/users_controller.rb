@@ -4,7 +4,7 @@ class UsersController < ApplicationController
  #before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all
+    @user = User.all
   end
 
   def show
@@ -50,8 +50,8 @@ class UsersController < ApplicationController
 
   private
      
-     def logged_in_candidate
-      unless logged_in_user?
+    def logged_in_candidate
+      unless logged_in?
       store_location
       redirect_to newsession_url
      end

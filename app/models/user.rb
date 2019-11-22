@@ -31,7 +31,7 @@ validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
    end
 
    def forget_user
-   update_attribute(:remember_digest, nil)
+     update_attribute(:remember_digest, nil)
    end
 
 end

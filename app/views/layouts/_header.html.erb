@@ -7,19 +7,16 @@
 <nav>
 <ul class="nav navbar-nav navbar-left">
 <li><%= link_to "Home",root_path %></li>
-<li><%= link_to "Entidades",'#' %></li>
-<li><%= link_to "Candidatos",'#' %></li>
+<li><%= link_to "Entidades",index_path %></li>
+<li><%= link_to "Candidatos",index_user_path %></li>
 <li><%= link_to "Ofertas", '#' %></li>
 <li><%= link_to "Noticias",'#' %></li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
 <% if logged_in? %>
-<li><%= link_to "| Log out", logout_path, method: :delete %></li>
+<li><%= link_to "| Logout", logout_path, method: :delete %></li>
 <% end %>
-<% if logged_in_user? %>
-<li><%= link_to "| Log_out", log_out_path, method: :delete %></li>
-<% end %>
-<% if !logged_in? && !logged_in_user? %>
+<% if !logged_in? %>
 <li><%= link_to "Registar-me",reges_path  %></li>
 <li><%= link_to "Log in", newsession_path %></li>
 <% end %>
