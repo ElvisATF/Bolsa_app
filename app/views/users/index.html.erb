@@ -1,5 +1,7 @@
 <% provide(:title, 'All Candidates') %>
 <h1>All Entities</h1>
+
+<%= will_paginate @user%>
 <ul class="users">
 <% @user.each do |user| %>
 <li>
@@ -10,4 +12,4 @@
 </ul>
 
 <%= link_to 'New User', new_user_path %>
-
+<%= will_paginate @user%>

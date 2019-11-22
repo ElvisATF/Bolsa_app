@@ -4,7 +4,7 @@ class UserEntitiesController < ApplicationController
   #before_action :set_user, only: [:show, :edit, :update, :destroy]
    
   def index
-    @user_entity = UserEntity.all
+    @user_entity = UserEntity.paginate(page: params[:page])
   end
 
 	def show

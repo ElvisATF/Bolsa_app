@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 2019_11_21_131236) do
     t.string "locality"
     t.string "professional_activity"
     t.string "presentation"
-    t.string "type_user"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
@@ -51,7 +50,6 @@ ActiveRecord::Schema.define(version: 2019_11_21_131236) do
     t.string "literary_abilities"
     t.string "professional_situation"
     t.string "professional_expirience"
-    t.string "type_user"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"

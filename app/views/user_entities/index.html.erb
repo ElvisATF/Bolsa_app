@@ -1,5 +1,8 @@
 <% provide(:title, 'All Entities') %>
 <h1>All Entities</h1>
+
+<%= will_paginate @user_entity%>
+
 <ul class="users">
 <% @user_entity.each do |user_entity| %>
 <li>
@@ -8,3 +11,5 @@
 </li>
 <% end %>
 </ul>
+<%= will_paginate @user_entity%>
+
