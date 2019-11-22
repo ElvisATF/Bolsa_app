@@ -31,30 +31,12 @@ def current_user_user
   end	
 end
 
-def current_user
-	  if (user_entity_id = session[:user_entity_id])
-		@current_user ||= UserEntity.find_by(id: user_entity_id)
-      elsif (user_entity_id = cookies.signed[:user_entity_id])
-       user_entity = UserEntity.find_by(id: user_entity_id)
-       if user_entity && user_entity.authenticated?(cookies[:remember_token])
-        log_in user_entity
-        @current_user = user_entity
-	end
-  end	
-end
-
-def logged_in?
-	!current_user.nil?
+def current?(user)
+user && user == current_user_user
 end
 
 def logged_in_user?
     !current_user_user.nil?
-end
-
-def log_out
-	forget(current_user)
-	session.delete(:user_entity_id)
-	@currrent_user = nil
 end
 
 def log_out_user
@@ -69,10 +51,45 @@ def forget_user(user)
 	cookies.delete(:remember_token)
 end
 
+def current_user
+	  if (user_entity_id = session[:user_entity_id])
+		@current_user ||= UserEntity.find_by(id: user_entity_id)
+      elsif (user_entity_id = cookies.signed[:user_entity_id])
+       user_entity = UserEntity.find_by(id: user_entity_id)
+       if user_entity && user_entity.authenticated?(cookies[:remember_token])
+        log_in user_entity
+        @current_user = user_entity
+	end
+  end	
+end
+
+def current_user?(user_entity)
+ user_entity && user_entity == current_user
+end
+
+def logged_in?
+	!current_user.nil?
+end
+
+def log_out
+	forget(current_user)
+	session.delete(:user_entity_id)
+	@currrent_user = nil
+end
+
 def forget(user_entity)
 	user_entity.forget
 	cookies.delete(:user_entity_id)
 	cookies.delete(:remember_token)
+end
+
+def redirect_back_or(default)
+	redirect_to(session[:forwarding_url] || default)
+	session.delete(:forwarding_url)
+end
+
+def store_location
+   session[:forwarding_url] = request.original_url if request.get?
 end
 
 end

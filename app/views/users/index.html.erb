@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
-
+<%= gravatar_for user, size: 50 %>
+<%= link_to user.name, user %>
 <h1>Users</h1>
 
 <table>
@@ -53,3 +54,5 @@
 <br>
 
 <%= link_to 'New User', new_user_path %>
+
+
