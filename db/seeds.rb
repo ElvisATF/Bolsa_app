@@ -23,7 +23,7 @@ end
 
 99.times do |n|
 	name = Faker::Name.name
-	email = "example-#{n+1}@railstutorial.org"
+	email = "xample-#{n+1}@railstutorial.org"
 	password = "password"
 	UserEntity.create!(name: name,
 				 email: email,

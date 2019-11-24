@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'password_resets/new'
+  get 'password_resets/edit'
   get '/entidades',   to: 'static_pages#entidades'
   get '/candidatos',  to: 'static_pages#candidatos'
   get '/reges',       to: 'static_pages#reges'
@@ -25,7 +27,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
 
-
+  resources :password_resets, only: [:new, :create, :edit, :update]
   resources :user_entities
   resources :users
 end
