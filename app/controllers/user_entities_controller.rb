@@ -1,6 +1,7 @@
 class UserEntitiesController < ApplicationController
-  before_action :logged_in_entity,           only: [:index, :edit, :update]
+  before_action :logged_in_entity,           only: [:index, :edit, :update, :destroy]
   before_action :correct_user,               only: [:edit, :update]
+  before_action :admin,                      only: :destroy
   #before_action :set_user, only: [:show, :edit, :update, :destroy]
    
   def index
@@ -40,7 +41,10 @@ class UserEntitiesController < ApplicationController
     end
   end
 
-  def destroy
+ def destroy
+    UserEntity.find(params[:id]).destroy
+    flash[:success] = "User deleted"
+    redirect_to user_entities_url
   end
     
   
@@ -66,5 +70,10 @@ class UserEntitiesController < ApplicationController
   def user_params
      params.require(:user_entity).permit(:name, :email, :password, :confirmation_password,:address, :postal_cod, :contact, :nif,:locality,:professional_activity,:presentation)
   end
+
+  def admin
+    redirect_to(root_url) unless current_user.admin?
+  end
+
  end
 
