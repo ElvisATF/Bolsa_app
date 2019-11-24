@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/new',         to: 'user_entities#create'
   get '/newsession',  to: 'sessions#newsession'
   get '/edit',        to: 'user_entities#edit' 
+  get '/edit',        to: 'users#edit' 
   get '/entidade',    to: 'user_entities#entidade'
   get '/signup',      to: 'users#new'
 

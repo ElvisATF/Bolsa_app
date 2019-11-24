@@ -6,10 +6,14 @@
 <h1>Nome</h1>
 <p> 
 	<%= gravatar_for @user_entity %>
+	
 	<%= @user_entity.name %>
 </p>
 </section >
 </aside>
+
+<% if current_user_user.nil?%>
 	<%= link_to "Edit Data", edit_user_entity_path(current_user), class: "btn btn-lg btn-primary btn-xs" %>
 	<%= link_to "Change Password", '#', class: "btn btn-lg btn-primary btn-xs" %>
+	<%end%>
 </div>
