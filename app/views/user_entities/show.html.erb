@@ -1,19 +1,25 @@
 <% provide(:title, @user_entity.name) %>
 
 <div class="row">
-<aside class="col-md-4">
-<section class="user_info">
-<h1>Nome</h1>
-<p> 
-	<%= gravatar_for @user_entity %>
-	
-	<%= @user_entity.name %>
-</p>
-</section >
-</aside>
-
-<% if current_user_user.nil?%>
-	<%= link_to "Edit Data", edit_user_entity_path(current_user), class: "btn btn-lg btn-primary btn-xs" %>
-	<%= link_to "Change Password", '#', class: "btn btn-lg btn-primary btn-xs" %>
-	<%end%>
+	<aside class="col-md-4">
+		<section class="user_info">
+		<h1>
+			<%= gravatar_for @user_entity %>
+			<%= @user_entity.name %>
+		</h1>
+		</section >
+	</aside>
+	<div class="col-md-8">
+	    <% if @user_entity.offers.any? %>
+			<h3>Offers (<%= @user_entity.offers.count %>)</h3>
+			<ol class="microposts">
+			<%= render @offers %>
+			</ol>
+			<%= will_paginate @offers %>
+		<% end %>
+	</div>
+		<% if current_user_user.nil?%>
+			<%= link_to "Edit Data", edit_user_entity_path(current_user), class: "btn btn-lg btn-primary btn-xs" %>
+			<%= link_to "Change Password", '#', class: "btn btn-lg btn-primary btn-xs" %>
+		<%end%>
 </div>

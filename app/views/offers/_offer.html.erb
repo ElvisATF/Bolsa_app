@@ -1,0 +1,8 @@
+<li id="offer-<%= offer.id %>">
+<%= link_to gravatar_for(offer.user, size: 50), offer.user_entity %>
+<span class="user"><%= link_to offer.user_entity.name, offer.user_entity %></span>
+<span class="content"><%= offer.content %></span>
+<span class="timestamp">
+Posted <%= time_ago_in_words(offer.created_at) %> ago.
+</span>
+</li>

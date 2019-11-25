@@ -10,6 +10,7 @@ class UserEntitiesController < ApplicationController
 
 	def show
 		@user_entity = UserEntity.find(params[:id])
+    @offers = @user_entity.offers.paginate(page: params[:page])
 	end
 
   def new

@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_24_212345) do
+ActiveRecord::Schema.define(version: 2019_11_24_231713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "offers", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_entity_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_entity_id", "created_at"], name: "index_offers_on_user_entity_id_and_created_at"
+    t.index ["user_entity_id"], name: "index_offers_on_user_entity_id"
+  end
 
   create_table "user_entities", force: :cascade do |t|
     t.string "name"
@@ -33,7 +42,6 @@ ActiveRecord::Schema.define(version: 2019_11_24_212345) do
     t.string "remember_digest"
     t.boolean "admin"
     t.string "reset_digest"
-    t.string ">"
     t.datetime "reset_sent_at"
     t.index ["email"], name: "index_user_entities_on_email", unique: true
   end
@@ -63,4 +71,5 @@ ActiveRecord::Schema.define(version: 2019_11_24_212345) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "offers", "user_entities"
 end
