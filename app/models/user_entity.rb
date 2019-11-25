@@ -39,6 +39,10 @@ def remember
     update_attribute(:remember_digest, UserEntity.digest(remember_token))
 end
 
+def feed
+	Offer.where("user_entity_id = ?", id)
+end
+
 def authenticated?(remember_token)
 	return false if remember_digest.nil?
 	BCrypt::Password.new(remember_digest).is_password?(remember_token)

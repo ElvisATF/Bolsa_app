@@ -13,10 +13,13 @@ Rails.application.routes.draw do
   get '/edit',        to: 'users#edit' 
   get '/entidade',    to: 'user_entities#entidade'
   get '/signup',      to: 'users#new'
+  get '/insert_offer',      to: 'offers#new'
+  
 
 
   get '/index',       to: 'user_entities#index'
   get '/index_user',  to: 'users#index'
+  get '/index_offer', to: 'offers#show' 
 
   delete '/logout',   to: 'sessions#destroy'
 
@@ -30,4 +33,5 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :user_entities
   resources :users
+  resources :offers, only: [:create, :destroy]
 end

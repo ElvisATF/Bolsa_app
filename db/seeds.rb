@@ -8,11 +8,7 @@
 #User.create!(name: "Example User",email: "xample@railstutorial.org",
 #password:              "foobar", password_confirmation: "foobar")
 
-user_entities = UserEntity.order(:created_at).take(6)
-50.times do
-	content = Faker::Lorem.sentence(word_count: 5)
-	user_entities.each { |user_entity| user_entity.offers.create!(content: content) }
-end
+
 
 UserEntity.create!(name: "Example User",email: "example@railstutorial.org",
 password:              "foobar", password_confirmation: "foobar",admin: true)
@@ -35,4 +31,10 @@ end
 				 email: email,
 				 password:password,
 				 password_confirmation: password)
+end
+
+user_entity = UserEntity.order(:created_at).take(6)
+50.times do
+	content = Faker::Lorem.sentence(word_count: 5)
+	user_entity.each { |user_entity| user_entity.offers.create!(content: content) }
 end

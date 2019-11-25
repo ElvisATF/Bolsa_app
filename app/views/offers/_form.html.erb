@@ -1,0 +1,50 @@
+<%= form_with(model: offer, local: true) do |form| %>
+  <% if offer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
+
+      <ul>
+        <% offer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+   <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_entity_id %>
+    <%= form.text_field :user_entity_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :professional_activity %>
+    <%= form.select :professional_activity, ['Informatica','Enfermagem','Mecanica'] %>
+   </div>
+
+     <div class="field">
+      <%= form.label :type_of_contract %>
+      <%= form.select :type_of_contract, ['Full-time','part-time'] %>
+      </div>
+
+      <div class="field">
+      <%= form.label :salary %>
+      <%= form.select :tsalary, ['600-1000','1000-1500','1500-2000'] %>
+      </div>
+
+      <span class="image">
+       <%= form.file_field :image %>
+      </span>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

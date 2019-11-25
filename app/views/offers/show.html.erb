@@ -1,0 +1,10 @@
+<% provide(:title, @offers.name) %>
+
+<div class="col-md-8">	   
+	<ol class="offers">
+	<%= render @offers %>		
+	</ol>
+
+	<%= will_paginate @offers %>	
+</div>
+	

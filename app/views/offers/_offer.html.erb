@@ -1,8 +1,21 @@
+
 <li id="offer-<%= offer.id %>">
-<%= link_to gravatar_for(offer.user, size: 50), offer.user_entity %>
-<span class="user"><%= link_to offer.user_entity.name, offer.user_entity %></span>
-<span class="content"><%= offer.content %></span>
-<span class="timestamp">
-Posted <%= time_ago_in_words(offer.created_at) %> ago.
-</span>
+
+	<%= link_to gravatar_for(offer.user_entity, size: 50), offer.user_entity %>
+
+	<span class="user"><%= link_to offer.user_entity.name,offer.user_entity %></span>
+
+	<span class="content"><%= offer.content %></span>
+
+	<%= image_tag offer.image if offer.image.attached? %>
+
+	<span class="timestamp">
+	Posted <%= time_ago_in_words(offer.created_at) %> ago.
+
+	<% if current_entity?(offer.user_entity) %>
+
+	<%= link_to "delete",offer, method: :delete, data: { confirm: "You sure?" } %>
+
+	<% end %>
+	</span>
 </li>

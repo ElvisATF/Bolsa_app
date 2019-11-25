@@ -167,9 +167,9 @@
 		}
 	}
 
-	/* microposts */
+	/* offers */
 
-	.microposts {
+	.offers {
 		list-style: none;
 		padding: 0;
 		li {
@@ -217,4 +217,13 @@
 		border: 0;
 		}
 	}
-		 
+
+	.core{
+	display:block;
+	float:right;
+	}
+    
+    .cor{
+    display: block;
+    display: left;
+    }
