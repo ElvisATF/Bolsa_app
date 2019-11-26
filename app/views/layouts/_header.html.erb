@@ -3,23 +3,35 @@
 <div class="container">
  <div class="container">
 <%= link_to "Bolsa de Empregos", root_path, id: "logo" %>
-</div>
-<nav>
-<ul class="nav navbar-nav navbar-left">
-<li><%= link_to "Home",root_path %></li>
-<li><%= link_to "Entidades",index_path %></li>
-<li><%= link_to "Candidatos",index_user_path %></li>
-<li><%= link_to "Ofertas", index_offer_path %></li>
-<li><%= link_to "Noticias",'#' %></li>
-</ul>
-<ul class="nav navbar-nav navbar-right">
-<% if logged_in? %>
-<li><%= link_to "| Logout", logout_path, method: :delete %></li>
-<% else%>
-<li><%= link_to "Registar-me",reges_path  %></li>
-<li><%= link_to "Log in", newsession_path %></li>
-<% end %>
-</ul>
-</nav>
-</div>
+  </div>
+	<nav>
+	 <% if  current_user && current_user.admin? %>
+		<ul class="nav navbar-nav navbar-left">
+				<li><%= link_to "Home",index_back_path %></li>
+				<li><%= link_to "Users",index_ad_path %></li>
+				<li><%= link_to "News",'#' %></li>
+		<ul class="nav navbar-nav navbar-right">
+			<% if logged_in? %>
+				<li><%= link_to "| Logout", logout_path, method: :delete %></li>
+			<%end%>
+		</ul>
+	<%else%>
+		<ul class="nav navbar-nav navbar-left">
+				<li><%= link_to "Home",root_path %></li>
+				<li><%= link_to "Entidades",index_path %></li>
+				<li><%= link_to "Candidatos",index_user_path %></li>
+				<li><%= link_to "Ofertas", index_offer_path %></li>
+				<li><%= link_to "Noticias",'#' %></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<% if logged_in? %>
+				<li><%= link_to "| Logout", logout_path, method: :delete %></li>
+			<% else%>
+				<li><%= link_to "Registar-me",reges_path  %></li>
+				<li><%= link_to "Log in", newsession_path %></li>
+			<% end %>
+		</ul>
+	  <%end%>
+	</nav>
+  </div>
 </header>

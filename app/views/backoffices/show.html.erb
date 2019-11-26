@@ -1,0 +1,18 @@
+<% user= User.all %>
+
+<table border="1">
+    <tr>
+        <td>Nome:</td>
+        <td>Tipo:</td>
+        <td>Activo:</td>
+        <td>Acçoes:</td>
+    </tr>
+    <% user.order(:user_type).each do |u| %>
+        <tr>
+            <td><%= u.name %></td>
+            <td><%= u.user_type %></td>
+            <td>Sim</td>
+            <td>Detalhe/Editar/Apagar</td>
+        </tr>
+    <% end %>
+</table>

@@ -28,7 +28,7 @@ class OffersController < ApplicationController
       @offer = current_user.offers.build(offer_params)
       @offer.image.attach(params[:offer][:image])
       if @offer.save
-        flash[:success] = "Offer created!"
+        flash[:success] = "Oferta Criada"
         redirect_to root_url
       else
       @feed_items = current_user.feed.paginate(page: params[:page])
@@ -39,22 +39,13 @@ class OffersController < ApplicationController
   # PATCH/PUT /offers/1
   # PATCH/PUT /offers/1.json
   def update
-    respond_to do |format|
-      if @offer.update(offer_params)
-        format.html { redirect_to @offer, notice: 'Offer was successfully updated.' }
-        format.json { render :show, status: :ok, location: @offer }
-      else
-        format.html { render :edit }
-        format.json { render json: @offer.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # DELETE /offers/1
   # DELETE /offers/1.json
   def destroy
     @offer.destroy
-    flash[:success] = "Offer deleted"
+    flash[:success] = "Oferta apagada"
     redirect_to request.referrer || root_url
     end
   

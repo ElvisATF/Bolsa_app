@@ -1,13 +1,13 @@
 class StaticPagesController < ApplicationController
+	 
+	def home
+		@offer = current_user.offers.build
+		@feed_items = current_user.feed.paginate(page: params[:page])
+	end
  
-def home
-  	if logged_in?
-  		@offer = current_user.offers.build 
-  		@feed_items = current_user.feed.paginate(page:params[:page])
-  end
-end
 
-  def new
-  end
+
+  	def new
+ 	 end
   
 end

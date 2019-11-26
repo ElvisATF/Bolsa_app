@@ -25,7 +25,7 @@ class UserEntitiesController < ApplicationController
     @user_entity = UserEntity.new(user_params)
     if @user_entity.save
       log_in @user_entity
-  	  flash[:success] = "Welcome to Bolsa de Empregos!"
+  	  flash[:success] = "Bem vindo á Bolsa de Empregos!"
   	  redirect_to @user_entity
     else
   	 render 'new'
@@ -35,7 +35,7 @@ class UserEntitiesController < ApplicationController
   def update
       @user_entity = UserEntity.find(params[:id])
     if @user_entity.update(user_params)
-      flash[:success] = "Profile updated"
+      flash[:success] = "Perfil atualizado"
       redirect_to @user_entity
     else
       render 'edit' 
@@ -44,12 +44,24 @@ class UserEntitiesController < ApplicationController
 
  def destroy
     UserEntity.find(params[:id]).destroy
-    flash[:success] = "User deleted"
+    flash[:success] = "Utilisador apagado"
     redirect_to user_entities_url
   end
     
   
+  def following
+    @title = "Following"
+    @user_entity = UserEntity.find(params[:id])
+    @user_entites = @user_entity.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
 
+  def followers
+    @title = "Followers"
+    @user_entity = UserEntity.find(params[:id])
+    @user_entites = @user_entity.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
  
      #def set_user
       #  @user_entity = UserEntity.find(params[:id])

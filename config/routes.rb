@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   get '/index',       to: 'user_entities#index'
   get '/index_user',  to: 'users#index'
   get '/index_offer', to: 'offers#show' 
+  get '/index_back',  to: 'backoffices#index_back'
+  get '/index_ad',    to: 'backoffices#index'
+
 
   delete '/logout',   to: 'sessions#destroy'
 
@@ -29,9 +32,15 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
+  resources :user_entities do
+    member do
+    get :following, :followers
+   end
+  end
 
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :user_entities
   resources :users
-  resources :offers, only: [:create, :destroy]
+  resources :offers,          only: [:create, :destroy]
+  resources :relationships,   only: [:create, :destroy]
 end

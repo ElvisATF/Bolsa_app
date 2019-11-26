@@ -13,7 +13,7 @@
 UserEntity.create!(name: "Example User",email: "example@railstutorial.org",
 password:              "foobar", password_confirmation: "foobar",admin: true)
 
-100.times do |n|
+50.times do |n|
 	name = Faker::Name.name
 	email = "example-#{n+1}@railstutorial.org"
 	password = "password"
@@ -23,7 +23,7 @@ password:              "foobar", password_confirmation: "foobar",admin: true)
 				 password_confirmation: password)
 end
 
-99.times do |n|
+50.times do |n|
 	name = Faker::Name.name
 	email = "xample-#{n+1}@railstutorial.org"
 	password = "password"
@@ -34,7 +34,14 @@ end
 end
 
 user_entity = UserEntity.order(:created_at).take(6)
-50.times do
+8.times do
 	content = Faker::Lorem.sentence(word_count: 5)
 	user_entity.each { |user_entity| user_entity.offers.create!(content: content) }
 end
+
+user_entities = UserEntity.all
+user_entity = user_entities.first
+following = user_entities[2..8]
+followers = user_entities[3..4]
+following.each { |followed| user_entity.follow(followed) }
+followers.each { |follower| follower.follow(user_entity) }
