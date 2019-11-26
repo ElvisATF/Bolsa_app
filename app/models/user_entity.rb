@@ -1,5 +1,5 @@
 class UserEntity < ApplicationRecord
-
+has_one_attached :image
 has_many :offers, dependent: :destroy
 has_many :offers, dependent: :destroy
 	has_many :active_relationships, class_name: "Relationship",
@@ -10,6 +10,12 @@ has_many :offers, dependent: :destroy
 has_many :passive_relationships, class_name: "Relationship",
 								foreign_key: "followed_id",
 								  dependent:  :destroy
+
+validates :image, content_type: { in: %w[image/jpeg image/gif image/png],
+								message: "must be a valid image format" },
+								size:
+								{ less_than: 5.megabytes,
+								message:"should be less than 5MB" }
 
 has_many :following, through: :active_relationships, source: :followed
 has_many :followers, through: :passive_relationships, source: :follower
@@ -74,6 +80,10 @@ end
 
 def following?(other_user_entity)
 	following.include?(other_user_entity)
+end
+
+def display_image
+	image.variant(resize_to_limit: [200, 200])
 end
 
 end

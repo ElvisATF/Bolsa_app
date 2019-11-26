@@ -5,8 +5,10 @@
 		<section class="user_info">
 		<h1>
 			<%= gravatar_for @user_entity %>
+			<%= image_tag @user_entity.display_image if @user_entity.image.attached? %>
 			<%= @user_entity.name %>
 		</h1>
+	<% if logged_in? %>
 		<% if current_user_user.nil?%>
 			<%= link_to "Edit Data", edit_user_entity_path(current_user), class: "btn btn-lg btn-primary btn-xs" %>
 			<%= link_to "Change Password", '#', class: "btn btn-lg btn-primary btn-xs" %>
@@ -28,6 +30,9 @@
 			</ol>
 			<%= will_paginate @offers %>
 		<% end %>
+		<%else%>
+		 <%= redirect_to newsession_url %>
+	<% end%>
 	</div>
 </div>
 

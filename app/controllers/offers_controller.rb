@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  before_action :logged_in_entity,    only: [:create, :destroy]
+  before_action :logged_in_entity,    only: [:create, :destroy, :index]
   before_action :correct_user,        only: :destroy
   # GET /offers
   # GET /offers.json

@@ -1,18 +1,34 @@
 <% provide(:title, "Home") %>
 
-<% if logged_in? %>
-	<h3>Ultimas Ofertas</h3>
-		<div class="row">
-			<aside class="col-md-4">
-				<section class="user_info">
-					<%= render 'shared/user_info' %>
-				</section>
-				<section class="stats">
-					<%= render 'shared/stats' %>
-				</section>
-			</aside>
-				<div class="col-md-8">
-					<%= render 'shared/feed' %>
-				</div>
+<div class="row">
+<aside class="col-md-4">
+<section class="user_info">
+
+</section>
+<section class="offer_form">
+<%= render 'shared/offer_form' %>
+</section>
+</aside>
+</div>
+		<div id="conteudo-left">
+		
+			<h3>Ultimas Ofertas</h3>
 		</div>
-	<% end %>
+
+
+		<div id="conteudo-right">
+			<h3>Ultimas Empresas</h3>
+
+		</div>
+
+
+		<div id="conteudo1-left">
+			
+				<h3>Ultimas Empresas</h3>
+		</div>
+
+	
+		<div id="conteudo1-right">
+			
+			<h3>Ultimas Empresas</h3>
+		</div>

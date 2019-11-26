@@ -20,7 +20,9 @@
       <%= f.password_field :password, class: 'form-control' %>
       </div>
 
-
+      <span class="image">
+     <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+      </span>
       <div class="field">
       <%= f.label :confirmation_password, "Confirmar password" %>
       <%= f.password_field :confirmation_password, class:'form-control' %>
@@ -72,3 +74,13 @@
     <% end %>
   </div>
 </div>
+
+<script type="text/javascript">
+      $("#user_entity_image").bind("change", function() {
+      var size_in_megabytes = this.files[0].size/1024/1024;
+      if (size_in_megabytes > 5) {
+      alert("Maximum file size is 5MB. Please choose a smaller file.");
+      }
+      $("#user_ebtity_image").val("");
+      });
+</script>

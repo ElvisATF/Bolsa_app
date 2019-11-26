@@ -23,6 +23,7 @@ class UserEntitiesController < ApplicationController
 
   def create
     @user_entity = UserEntity.new(user_params)
+    @user_entity.image.attach(params[:user_entity][:image])
     if @user_entity.save
       log_in @user_entity
   	  flash[:success] = "Bem vindo á Bolsa de Empregos!"
@@ -81,7 +82,7 @@ class UserEntitiesController < ApplicationController
   end
 
   def user_params
-     params.require(:user_entity).permit(:name, :email, :password, :confirmation_password,:address, :postal_cod, :contact, :nif,:locality,:professional_activity,:presentation)
+     params.require(:user_entity).permit(:name, :email, :password, :confirmation_password,:address, :postal_cod, :contact, :nif,:locality,:professional_activity,:presentation, :image)
   end
 
   def admin
