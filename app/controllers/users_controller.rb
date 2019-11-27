@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-   before_action :logged_in_candidate,      only: [:index, :edit, :update, :destroy]
+   before_action :logged_in_candidate,      only: [:index, :edit, :update, :destroy, :following]
    before_action :correct,                  only: [:edit, :update]
    before_action :admin_user,                    only: :destroy
  #before_action :set_user, only: [:show, :edit, :update, :destroy]
@@ -48,7 +48,16 @@ class UsersController < ApplicationController
     end
 
   private
-     
+       
+    def following
+  @title = "Following"
+  @user = User.find(params[:id])
+  @users = @user.following.paginate(page: params[:page])
+  render 'show_follow'
+  end
+
+  
+
     def logged_in_candidate
       unless logged_in?
       store_location
@@ -74,18 +83,6 @@ class UsersController < ApplicationController
     end
 
 
-  def following
-    @title = "Following"
-    @user_entity = UserEntity.find(params[:id])
-    @user_entities = @user_entity.following.paginate(page: params[:page])
-    render 'show_follow'
-  end
-
-  def followers
-    @title = "Followers"
-    @user = User.find(params[:id])
-    @user = @user.followers.paginate(page: params[:page])
-    render 'show_follow'
-  end
+  
 
 end

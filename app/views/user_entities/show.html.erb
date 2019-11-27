@@ -25,20 +25,23 @@
 			<%end%>
 		</section >
 	   <section class="stat">
-		<%= render 'shared/stat' %>
+		<%= render 'shared/stats' %>
 	   </section>
 	</aside>
 	<div class="col-md-8">
+      <%= render 'users/follow' if logged_in? %>
+    </div>
+	<div class="col-md-8">
 	<%if !current_user_user.nil?%>
-			<%=render 'users/follo'%>
+			
 			  <% if @user_entity.offers.any? %>
 					<h3>Offers (<%= @user_entity.offers.count %>)</h3>
 					<ol class="offers">
 					<%= render @offers %>
 					</ol>
 					<%= will_paginate @offers %>
-				<%elsif !current_user_user.nil? &&  logged_in?%>
-			 		<%= render 'users/unfollo'  %>
+				
+			 		
 			  <% end %>
 	<% end%>
 	
