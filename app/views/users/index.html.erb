@@ -1,8 +1,6 @@
 <% provide(:title, 'All Candidates') %>
 <h1>Todos os Candidatos</h1>
 
-<%= will_paginate @user%>
-
 <ul class="users">
 <% @user.each do |user| %>
 <li>
@@ -16,5 +14,5 @@ data: { confirm: "You sure?" } %>
 <% end %>
 </ul>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'Registar-me', new_user_path %>
 <%= will_paginate @user%>

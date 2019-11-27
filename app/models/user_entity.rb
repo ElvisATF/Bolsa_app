@@ -2,7 +2,9 @@ class UserEntity < ApplicationRecord
 has_one_attached :image
 has_many :offers, dependent: :destroy
 has_many :offers, dependent: :destroy
-	has_many :active_relationships, class_name: "Relationship",
+
+
+has_many :active_relationships, class_name: "Relationship",
 								   foreign_key: "follower_id",
 									 dependent:  :destroy
 
@@ -83,7 +85,7 @@ def following?(other_user_entity)
 end
 
 def display_image
-	image.variant(resize_to_limit: [200, 200])
+	image.variant(resize_to_limit: [110, 70])
 end
 
 end

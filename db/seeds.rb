@@ -39,9 +39,16 @@ user_entity = UserEntity.order(:created_at).take(6)
 	user_entity.each { |user_entity| user_entity.offers.create!(content: content) }
 end
 
-user_entities = UserEntity.all
-user_entity = user_entities.first
-following = user_entities[2..8]
-followers = user_entities[3..4]
-following.each { |followed| user_entity.follow(followed) }
-followers.each { |follower| follower.follow(user_entity) }
+#user_entities = UserEntity.all
+#user_entity = user_entities.first
+#following = user_entities[2..8]
+#followers = user_entities[3..4]
+#following.each { |followed| user_entity.follow(followed) }
+#followers.each { |follower| follower.follow(user_entity) }
+
+#users = User.all
+#user = users.first
+#following = users[2..50]
+#followers = users[3..40]
+#following.each { |followed| user.follow(followed) }
+#followers.each { |follower| follower.follow(user) }

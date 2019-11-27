@@ -1,85 +1,60 @@
 <% provide(:title, @user.name) %>
-<h1>
-<%= gravatar_for @user %>
-</h1>
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+  <div class="container">
 
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
+ 
+  <divclass="row">
+    <div >
+        <div class="col-xs-6 col-md-4">
+        <%= @user.name %>
+        <p>
+        <%= gravatar_for @user %>
+      </p>
+      <section class="stats">
+      <%= render 'shared/stat' %>
+      </section>
+      <p>
+      <div class="col-md-8">
+      <%= render 'follo_form' if logged_in? %>
+    </div>
+  </p>
+      <p>
+     <% if current_user.nil?&& current?(current_user) %>
+      <%= link_to 'Edit', edit_user_path(current_user_user), class: "btn btn-lg btn-primary btn-xs" %> 
+        <%end%>
+      </p>
+    </div>
 
-<p>
-  <strong>Password confirmation:</strong>
-  <%= @user.password_confirmation %>
-</p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+    <div class="col-xs-6 col-md-4">
 
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
+      <p>
+        <%= @user.presentation %>
+      </p>
 
-<p>
-  <strong>Postal cod:</strong>
-  <%= @user.postal_cod %>
-</p>
+      <h1>Dados Profissionais</h1>
 
-<p>
-  <strong>Locality:</strong>
-  <%= @user.locality %>
-</p>
+      <p>
+        <%= @user.professional_area %>
+      </p>
 
-<p>
-  <strong>Contact:</strong>
-  <%= @user.contact %>
-</p>
+      <h1>Dados Pessoais</h1>
 
-<p>
-  <strong>Identity card:</strong>
-  <%= @user.identity_card %>
-</p>
+      <p>
+        <%= @user.address %>
+      </p>
 
-<p>
-  <strong>Professional area:</strong>
-  <%= @user.professional_area %>
-</p>
+      <p>
+        <%= @user.contact %>
+         <%= @user.locality %>
+        <%= @user.postal_cod %>
+    </div>
 
-<p>
-  <strong>Presentation:</strong>
-  <%= @user.presentation %>
-</p>
+  </div>
 
-<p>
-  <strong>Level of qualifications:</strong>
-  <%= @user.level_of_qualifications %>
-</p>
 
-<p>
-  <strong>Literary abilities:</strong>
-  <%= @user.literary_abilities %>
-</p>
-
-<p>
-  <strong>Professional situation:</strong>
-  <%= @user.professional_situation %>
-</p>
-
-<p>
-  <strong>Professional expirience:</strong>
-  <%= @user.professional_expirience %>
-</p>
-<% if current_user.nil? %>
-<%= link_to 'Edit', edit_user_path(current_user_user), class: "btn btn-lg btn-primary btn-xs" %> 
-
-<%= link_to 'Ver Candidatos', users_path,  class: "btn btn-lg btn-primary btn-xs" %>
-<% end %>
+   </div>
+    <% if current_user.nil? %>
+      <%= link_to 'Ver Candidatos', users_path %>
+    <% end %>
+  </div>

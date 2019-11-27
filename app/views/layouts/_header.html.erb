@@ -24,9 +24,14 @@
 				<li><%= link_to "Noticias",'#' %></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<% if logged_in? %>
+			<% if logged_in? && current?(current_user_user)%>
+				<li><%= link_to current_user_user.name, current_user_user %></li>
 				<li><%= link_to "| Logout", logout_path, method: :delete %></li>
-			<% else%>
+
+			<% elsif logged_in? && current_entity?(current_user) %>
+				<li><%= link_to current_user.name, current_user %></li>
+				<li><%= link_to "| Logout", logout_path, method: :delete %></li>
+			<% elsif%>
 				<li><%= link_to "Registar-me",reges_path  %></li>
 				<li><%= link_to "Log in", newsession_path %></li>
 			<% end %>
@@ -35,3 +40,4 @@
 	</nav>
   </div>
 </header>
+	

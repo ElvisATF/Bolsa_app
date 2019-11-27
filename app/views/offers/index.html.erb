@@ -8,8 +8,8 @@
      <%= gravatar_for offer, size: 50 %>
      <%= link_to offer.name, offer %>
      <%= offer.content %>
-     <%= link_to 'Show', offer %>
-<% if current_user_user.nil?
+    
+<% if current_user_user.nil?%>
      <%= link_to 'Edit', edit_offer_path(offer) %>
 
   <% if current_user.admin? && !current_entity?(user_entity) %>

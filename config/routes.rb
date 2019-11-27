@@ -38,6 +38,12 @@ Rails.application.routes.draw do
    end
   end
 
+  resources :users do
+    member do
+    get :following, :followers
+   end
+  end
+
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :user_entities
   resources :users

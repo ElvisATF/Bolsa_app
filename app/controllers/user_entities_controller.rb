@@ -48,19 +48,18 @@ class UserEntitiesController < ApplicationController
     flash[:success] = "Utilisador apagado"
     redirect_to user_entities_url
   end
-    
   
   def following
     @title = "Following"
     @user_entity = UserEntity.find(params[:id])
-    @user_entites = @user_entity.following.paginate(page: params[:page])
+    @user_entities = @user_entity.following.paginate(page: params[:page])
     render 'show_follow'
   end
 
   def followers
     @title = "Followers"
     @user_entity = UserEntity.find(params[:id])
-    @user_entites = @user_entity.followers.paginate(page: params[:page])
+    @user_entities = @user_entity.followers.paginate(page: params[:page])
     render 'show_follow'
   end
  

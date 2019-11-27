@@ -7,7 +7,6 @@
 		<%= gravatar_for user_entity, size: 50%>
 		<%= image_tag user_entity.image if user_entity.image.attached? %>
 		<%= link_to user_entity.name, user_entity %>
-		<%= user_entity.presentation%>
 		<% if current_user && current_user.admin? && !current_entity?(user_entity) %>
 		| <%= link_to "delete", user_entity, method: :delete,
 		data: { confirm: "You sure?" } %>
