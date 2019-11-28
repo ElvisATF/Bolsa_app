@@ -10,6 +10,12 @@ has_many :active_relationships, class_name: "Relationship",
 has_many :following, through: :active_relationships, source: :followed
 
 
+
+validates :image,content_type: { in: %w[image/jpeg image/gif image/png],
+                                 message: "must be a valid image format" },
+                                 size: { less_than: 5.megabytes,
+                                 message: "should be less than 5MB" }
+
 attr_accessor :remember_token, :activation_token, :reset_token
 before_save { email.downcase! }
 validates :name, presence: true, length: { maximum: 50 }
@@ -66,6 +72,10 @@ validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
    def forget_user
      update_attribute(:remember_digest, nil)
+   end
+
+   def display_image
+     image.variant(resize_to_limit: [110, 70])
    end
 
 end

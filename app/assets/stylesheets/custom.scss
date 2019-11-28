@@ -351,6 +351,72 @@
 }
 
 .botao{
-	width:100px;
+	width:150px;
+	float:left;
+}
+
+
+.r{
+
 	float:right;
+	display: block;
+}
+.t{width:500px;}
+
+.fo{
+	padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+}
+.pa{
+	padding: 20px;
+}
+.pal{
+	padding: 10px;
+}
+
+.al{
+	margin-top: -73px;
+}
+
+.fot{
+	margin-right:-385px;
+	margin-bottom: -60px;
+	display: block;
+}
+.co{
+	width: 200px;
+}
+
+.lo{
+	margin-left: 570px;
+	margin-top: -73px;
+}
+.area{
+	width: 80px;
+}
+
+#novo{  text-align:left;}
+
+#tab{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#tab td, #tab th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#tab tr:nth-child(even){background-color: #f2f2f2;}
+
+#tab tr:hover {background-color: #ddd;}
+
+#tab th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
 }

@@ -1,92 +1,107 @@
-<div class="row">
-    <div class="col-md-6 col-md-offset-3">
+<div class="row forma fo">
+    <div class="pa">
 
 <%= form_with(model: user, local: true) do |f| %>
   <%= render 'shared/eror_messages' %>
 
-  <div class="field">
+  <div class="field t">
     <%= f.label :email %>
     <%= f.text_field :email, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="field t">
     <%= f.label :password %>
     <%= f.password_field :password, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %>
+  <div class="field t r al">
+    <%= f.label :password_confirmation,  'Confirmar da Password' %>
     <%= f.password_field :password_confirmation, class: 'form-control'  %>
   </div>
 
-  <div class="field">
-    <%= f.label :name %>
+  <span class="image r fot">
+    <%= 'Foto'%>
+  <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+  </span>
+
+  <div class="field t">
+    <%= f.label :name ,'Nome'%>
     <%= f.text_field :name , class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= f.label :address %>
+    <%= f.label :address, 'Morada' %>
     <%= f.text_area :address , class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= f.label :postal_cod %>
+  <div class="field co">
+    <%= f.label :postal_cod, 'Codigo Postal'  %>
     <%= f.text_field :postal_cod, class: 'form-control'  %>
   </div>
 
-  <div class="field">
-    <%= f.label :locality %>
+  <div class="field co lo">
+    <%= f.label :locality ,'Localidade' %>
     <%= f.text_field :locality, class: 'form-control'  %>
   </div>
 
-  <div class="field">
-    <%= f.label :contact %>
+  <div class="field co">
+    <%= f.label :contact,'Contactos'  %>
     <%= f.text_field :contact, class: 'form-control'  %>
   </div>
 
-  <div class="field">
-    <%= f.label :identity_card %>
+  <div class="field co">
+    <%= f.label :identity_card, 'Bilhete de Identidade' %>
     <%= f.text_field :identity_card , class: 'form-control' %>
   </div>
 
 
-   <div class="field">
-      <%= f.label :professional_area   %>
-      <%= f.select :professional_area , ['Engenharia','Medecina','Economia','Politica'] %>
+   <div class="field co">
+      <%= f.label :professional_area ,'Area Profissional'  %>
+      <%= f.select :professional_area , ['Programador','Youtuber','Mecanico'] %>
     </div>
 
   <div class="field">
-    <%= f.label :presentation %>
+    <%= f.label :presentation,'Apresentação' %>
     <%= f.text_area :presentation, class: 'form-control'  %>
   </div>
 
-   <div class="field">
-      <%= f.label :level_of_qualifications   %>
+   <div class="field co">
+      <%= f.label :level_of_qualifications,'Nivel de Qualificação'   %>
       <%= f.select :level_of_qualifications , ['Diploma Universitario','12º Ano','Formação Profissional','Mestrado'] %>
       </div>
 
 
 
   <div class="field">
-    <%= f.label :literary_abilities %>
+    <%= f.label :literary_abilities,'Habilitações literarias' %>
     <%= f.text_area :literary_abilities, class: 'form-control'  %>
   </div>
 
 
 
-   <div class="field">
-      <%= f.label :professional_situation  %>
+   <div class="field co">
+      <%= f.label :professional_situation ,'Situação Profissional' %>
       <%= f.select :professional_situation , ['Empreado','Desempregado','Estudante'] %>
       </div>
 
   <div class="field">
-    <%= f.label :experiencia_profissional%>
+    <%= f.label :professional_expirience,'Experiencia Profissional'%>
     <%= f.text_area :professional_expirience , class: 'form-control' %>
   </div>
 
   <div >
-    <%= f.submit "Create User", class:"actions btn btn-primary"%>
+    <%= f.submit "Registar", class:"actions btn btn-primary botao"%>
   </div>
 <% end %>
 </div>
 </div>
+
+<script type="text/javascript">
+$("#micropost_image").bind("change", function() {
+var size_in_megabytes = this.files[0].size/1024/1024;
+if (size_in_megabytes > 5) {
+alert("Maximum file size is 5MB. Please choose a smaller file.");
+}
+$("#micropost_image").val("");
+});
+</script>

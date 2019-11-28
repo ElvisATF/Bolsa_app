@@ -1,0 +1,31 @@
+<% provide(:title, 'Utilisadores') %>
+
+
+<% if current_user && current_user.admin? && !current_entity?(@user_entity) %>
+
+	<table id="tab">
+	<tr>
+        <td>Nome:</td>
+        <td>Tipo:</td>
+        <td>Acções</td>
+    </tr>
+	<% @user_entity.each do |user_entity| %>
+
+		<tr>
+		<td><%=  user_entity.name %></td>
+		<td>Entidade</td>
+		<td> <%= link_to "delete", user_entity, method: :delete,
+		data: { confirm: "You sure?" } %>
+		<%= link_to "detalhes", user_entity%>
+		</td>
+	
+	</tr>
+
+<%end%>
+	<% end %>
+</table>
+<%= will_paginate @user_entity%>
+
+
+
+   

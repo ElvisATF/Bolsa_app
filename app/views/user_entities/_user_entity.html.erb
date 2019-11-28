@@ -1,5 +1,8 @@
-
+<%if user_entity.image.attached?%>
+	<%= image_tag user_entity.display_image if user_entity.image.attached? %>
+<%else%>
     <%= gravatar_for user_entity %>
+ <%end%>
     
 
  

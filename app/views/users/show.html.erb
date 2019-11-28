@@ -8,7 +8,7 @@
         <div class="col-xs-6 col-md-4">
         <%= @user.name %>
         <p>
-        <%= gravatar_for @user %>
+          <%= render 'users/user'%>
       </p>
       <section class="stats">
       <%= render 'shared/stat' %>
@@ -30,13 +30,13 @@
         <%= @user.presentation %>
       </p>
 
-      <h1>Dados Profissionais</h1>
+      <h1 class="novo">Dados Profissionais</h1>
 
       <p>
         <%= @user.professional_area %>
       </p>
 
-      <h1>Dados Pessoais</h1>
+      <h1 class="novo">Dados Pessoais</h1>
 
       <p>
         <%= @user.address %>

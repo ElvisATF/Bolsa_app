@@ -22,6 +22,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.image.attach(params[:user][:image])
     if @user.save
       log_in_user @user
       flash[:success] = "Bem vindo á Bolsa de emprego"
@@ -75,7 +76,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :name, :address, :postal_cod, :locality, :contact, :identity_card, :professional_area, :presentation, :level_of_qualifications, :literary_abilities, :professional_situation, :professional_expirience)
+      params.require(:user).permit(:email, :password, :password_confirmation, :name, :address, :postal_cod, :locality, :contact, :identity_card, :professional_area, :presentation, :level_of_qualifications, :literary_abilities, :professional_situation, :professional_expirience,:image)
     end
 
     def admin_user

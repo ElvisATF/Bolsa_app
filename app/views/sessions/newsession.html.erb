@@ -1,8 +1,8 @@
 <% provide(:title, "Log in") %>
 
 
-<div class="container login">
-	<div class="col-md-6 col-md-offset-3 form">
+<div class=" login">
+	<div class="col-md-6 col-md-offset-3 form ">
 	<h1>Entrar</h1>
 		<%= form_with(url: newsession_path, scope: :session, local: true) do |f| %>
 		<%= f.label :email %>
@@ -13,11 +13,11 @@
 
 		<%= f.label :remember_me, class: "checkbox inline" do %>
 		<%= f.check_box :remember_me %>
-		<span>Remember me on this computer</span>
+		<span>Lembrar palavra passe</span>
 		<% end %>
 
 		<%= f.submit "Entrar", class: "btn btn-primary botao" %>
 		<% end %>
-	<p>New user? <%= link_to "Registrar", reges_path %></p>
+	<p>Novo Utilizador <%= link_to "Registrar", reges_path %></p>
 	</div>
 </div>

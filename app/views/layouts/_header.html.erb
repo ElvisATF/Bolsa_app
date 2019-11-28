@@ -7,17 +7,17 @@
 	<nav>
 	 <% if  current_user && current_user.admin? %>
 		<ul class="nav navbar-nav navbar-left">
-				<li><%= link_to "Home",index_back_path %></li>
-				<li><%= link_to "Users",index_ad_path %></li>
-				<li><%= link_to "News",'#' %></li>
+				<li><%= link_to "Pagina Principal",index_back_path %></li>
+				<li><%= link_to "Utilisadores",index_ad_path %></li>
+				<li><%= link_to "Noticias",'#' %></li>
 		<ul class="nav navbar-nav navbar-right">
 			<% if logged_in? %>
-				<li><%= link_to "| Logout", logout_path, method: :delete %></li>
+				<li><%= link_to "| Sair", logout_path, method: :delete %></li>
 			<%end%>
 		</ul>
 	<%else%>
 		<ul class="nav navbar-nav navbar-left">
-				<li><%= link_to "Home",root_path %></li>
+				<li><%= link_to "Pagina Principal",root_path %></li>
 				<li><%= link_to "Entidades",index_path %></li>
 				<li><%= link_to "Candidatos",index_user_path %></li>
 				<li><%= link_to "Ofertas", index_offer_path %></li>
@@ -26,14 +26,14 @@
 		<ul class="nav navbar-nav navbar-right">
 			<% if logged_in? && current?(current_user_user)%>
 				<li><%= link_to current_user_user.name, current_user_user %></li>
-				<li><%= link_to "| Logout", logout_path, method: :delete %></li>
+				<li><%= link_to "| Sair", logout_path, method: :delete %></li>
 
 			<% elsif logged_in? && current_entity?(current_user) %>
 				<li><%= link_to current_user.name, current_user %></li>
-				<li><%= link_to "| Logout", logout_path, method: :delete %></li>
+				<li><%= link_to "| Sair", logout_path, method: :delete %></li>
 			<% elsif%>
 				<li><%= link_to "Registar-me",reges_path  %></li>
-				<li><%= link_to "Log in", newsession_path %></li>
+				<li><%= link_to "Entrar", newsession_path %></li>
 			<% end %>
 		</ul>
 	  <%end%>

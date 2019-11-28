@@ -1,4 +1,4 @@
-<% unless current_entity?(@user_entity) %>
+<% unless current?(@user) %>
 <div id="follow_form">
 <% if current_user_user.following?(@user_entity) %>
 <%= render 'unfollow' %>

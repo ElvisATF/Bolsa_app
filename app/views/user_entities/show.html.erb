@@ -14,23 +14,20 @@
 	  			<%= @user_entity.presentation %>
 			</h1>
 		  <% if logged_in? %>
-			<% if current_user_user.nil?%>
+		   <%if current_entity?(current_user)%>
+			<% if  @user_entity.id == current_user.id%>
 				<%= link_to "Edit Data", edit_user_entity_path(current_user), class: "btn btn-lg btn-primary btn-xs" %>
-				<%= link_to "Change Password", '#', class: "btn btn-lg btn-primary btn-xs" %>
-
-				<% if !current_user.nil? %>
-					<%= link_to "Insert Offers", insert_offer_path, class: "btn btn-primary" %>
+				
+					<%= link_to "Inserir Ofertas", insert_offer_path, class: "btn btn-lg btn-primary btn-xs"  %>
 				<%end%>
-				<% end %>
+				<%end%>
 			<%end%>
 		</section >
-	   <section class="stat">
-		<%= render 'shared/stats' %>
-	   </section>
+	   
 	</aside>
-	<div class="col-md-8">
-      <%= render 'users/follow' if logged_in? %>
-    </div>
+	<%if current_user.nil?%>
+	
+    <%end%>
 	<div class="col-md-8">
 	<%if !current_user_user.nil?%>
 			

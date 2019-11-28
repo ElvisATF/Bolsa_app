@@ -14,12 +14,9 @@ has_many :followers, through: :passive_relationships, source: :follower
 
 validates :image, content_type: { in: %w[image/jpeg image/gif image/png],
 								message: "must be a valid image format" },
-								size:
-								{ less_than: 5.megabytes,
+								size: { less_than: 5.megabytes,
 								message:"should be less than 5MB" }
 
-has_many :following, through: :active_relationships, source: :followed
-has_many :followers, through: :passive_relationships, source: :follower
 attr_accessor :remember_token, :activation_token, :reset_token
 
 before_save { email.downcase! }
@@ -84,7 +81,7 @@ def following?(other_user_entity)
 end
 
 def display_image
-	image.variant(resize_to_limit: [110, 70])
+	image.variant(resize_to_limit: [200, 200])
 end
 
 end

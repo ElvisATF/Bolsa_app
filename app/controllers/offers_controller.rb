@@ -13,17 +13,16 @@ class OffersController < ApplicationController
     @offers = Offer.paginate(page: params[:page])
   end
 
-  # GET /offers/new
+
   def new
     @offer = Offer.new
   end
 
-  # GET /offers/1/edit
+
   def edit
   end
 
-  # POST /offers
-  # POST /offers.json
+
   def create
       @offer = current_user.offers.build(offer_params)
       @offer.image.attach(params[:offer][:image])
@@ -36,13 +35,11 @@ class OffersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /offers/1
-  # PATCH/PUT /offers/1.json
+
   def update
   end
 
-  # DELETE /offers/1
-  # DELETE /offers/1.json
+
   def destroy
     @offer.destroy
     flash[:success] = "Oferta apagada"
